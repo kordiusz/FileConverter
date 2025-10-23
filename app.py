@@ -25,6 +25,7 @@ def convert_file(uploaded_file, output_format):
 
 def main():
     st.title("Konwerter plików multimedialnych")
+    st.caption("Limit 10MB per file • JPEG, PNG, BMP, FLV, MOV, MP4, AVI, WAV, MP3, 3GP, MIDI")
 
     uploaded_file = st.file_uploader("Prześlij plik", type=["jpeg", "png", "bmp", "flv", "mov", "mp4", "avi", "wav", "mp3", "3gp", "midi"])
     output_format = st.selectbox("Wybierz format docelowy", ["jpeg", "png", "bmp", "flv", "mov", "mp4", "avi", "wav", "mp3", "3gp", "midi"])
