@@ -83,15 +83,18 @@ def main():
     ffmpeg_exe = get_ffmpeg_executable()
     if ffmpeg_exe is None:
         st.warning("Nie znaleziono binarki ffmpeg. Możesz zainstalować pakiet systemowy `ffmpeg` lub użyć `imageio-ffmpeg` jako fallback.")
-        if st.button("Zainstaluj imageio-ffmpeg (pip)"):
+        auto_install = st.checkbox("Automatycznie zainstaluj imageio-ffmpeg (pip)")
+        if auto_install:
             with st.spinner("Instaluję imageio-ffmpeg..."):
                 import sys
                 import subprocess as _sub
                 try:
-                    _sub.check_call([sys.executable, "-m", "pip", "install", "imageio-ffmpeg"])
-                    st.success("Zainstalowano imageio-ffmpeg. Odśwież stronę, aby użyć go jako ffmpeg.")
+                    _sub.check_call([sys.executable, "-m", "pip", "install", "imageio-ffmpeg"]) 
+                    st.success("Zainstalowano imageio-ffmpeg. Aplikacja spróbuje teraz użyć dostarczonej binarki.")
                 except Exception as e:
                     st.error(f"Instalacja nie powiodła się: {e}")
+            # Re-check after attempted install
+            ffmpeg_exe = get_ffmpeg_executable()
 
     if uploaded_file and output_format:
         # Determine the type of the uploaded file
