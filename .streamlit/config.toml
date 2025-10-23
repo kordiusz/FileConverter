@@ -1,0 +1,11 @@
+[theme]
+base = "dark"
+primaryColor = "#1f77b4"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#131518"
+textColor = "#e6eef8"
+font = "sans serif"
+
+# Optional: reduce the default padding/margins to make the UI tighter on dark theme
+[browser]
+gatherUsageStats = false
